@@ -39,8 +39,8 @@ export function HeroCarousel() {
           }}
         >
           <Stack
-            justifyContent="center"
             sx={{
+              justifyContent: "center",
               height: "100%",
               px: { xs: 4, md: 8 },
               maxWidth: { xs: "100%", md: "60%" },
