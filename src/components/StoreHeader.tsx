@@ -2,7 +2,7 @@ import { AppBar, Badge, IconButton, InputBase, Stack, Toolbar, Typography, Box }
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
+import PersonOutlineIcon from "@mui/icons-material/PersonOutlined";
 
 export function StoreHeader({ query, onQuery }: { query: string; onQuery: (q: string) => void }) {
   return (
