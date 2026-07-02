@@ -2,23 +2,21 @@ import { Box, Card, CardContent, Chip, IconButton, Rating, Stack, Typography, Bu
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import type { Product } from "@/data/products";
-import { Link } from "@tanstack/react-router";
+import { useNavigate } from "@tanstack/react-router";
 import { useApp } from "@/store/AppContext";
 
 export function ProductCard({ product }: { product: Product }) {
   const { addToCart } = useApp();
+  const navigate = useNavigate();
   return (
     <Card
-      component={Link}
-      to="/product/$id"
-      params={{ id: String(product.id) }}
+      onClick={() => navigate({ to: "/product/$id", params: { id: String(product.id) } })}
       sx={{
         height: "100%",
         display: "flex",
         flexDirection: "column",
         overflow: "hidden",
-        textDecoration: "none",
-        color: "inherit",
+        cursor: "pointer",
         transition: "transform 250ms ease, box-shadow 250ms ease",
         "&:hover": {
           transform: "translateY(-4px)",
