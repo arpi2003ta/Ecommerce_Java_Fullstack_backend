@@ -69,11 +69,11 @@ export function ProductCard({ product }: { product: Product }) {
         }}>
           {product.description}
         </Typography>
-        <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ mt: "auto", pt: 1 }}>
+        <Stack direction="row" sx={{ alignItems: "center", justifyContent: "space-between", mt: "auto", pt: 1 }}>
           <Typography variant="h6" sx={{ fontWeight: 800 }}>
             ${product.price.toFixed(2)}
           </Typography>
-          <Stack direction="row" alignItems="center" spacing={0.5}>
+          <Stack direction="row" spacing={0.5} sx={{ alignItems: "center" }}>
             <Rating value={product.rating} precision={0.1} size="small" readOnly />
             <Typography variant="caption" color="text.secondary">
               {product.rating.toFixed(1)}
