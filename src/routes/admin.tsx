@@ -186,7 +186,7 @@ function AdminPage() {
               </TextField>
               <Stack direction="row" spacing={2}>
                 <TextField label="Price" type="number" value={editing.price} onChange={(e) => setEditing({ ...editing, price: Number(e.target.value) })} fullWidth />
-                <TextField label="Rating" type="number" inputProps={{ step: 0.1, min: 0, max: 5 }} value={editing.rating} onChange={(e) => setEditing({ ...editing, rating: Number(e.target.value) })} fullWidth />
+                <TextField label="Rating" type="number" slotProps={{ htmlInput: { step: 0.1, min: 0, max: 5 } }} value={editing.rating} onChange={(e) => setEditing({ ...editing, rating: Number(e.target.value) })} fullWidth />
               </Stack>
               <TextField label="Image URL" value={editing.image} onChange={(e) => setEditing({ ...editing, image: e.target.value })} fullWidth />
               <TextField label="Description" value={editing.description} onChange={(e) => setEditing({ ...editing, description: e.target.value })} fullWidth multiline rows={3} />
