@@ -7,11 +7,13 @@ import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettin
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useState, type MouseEvent } from "react";
 import { useApp } from "@/store/AppContext";
+import { CartDrawer } from "@/components/CartDrawer";
 
 export function StoreHeader({ query, onQuery }: { query: string; onQuery: (q: string) => void }) {
   const { user, logout, cart } = useApp();
   const navigate = useNavigate();
   const [anchor, setAnchor] = useState<null | HTMLElement>(null);
+  const [cartOpen, setCartOpen] = useState(false);
   const cartCount = cart.reduce((s, c) => s + c.qty, 0);
   const open = (e: MouseEvent<HTMLElement>) => setAnchor(e.currentTarget);
   const close = () => setAnchor(null);
@@ -91,10 +93,11 @@ export function StoreHeader({ query, onQuery }: { query: string; onQuery: (q: st
         <IconButton sx={{ display: { xs: "none", sm: "inline-flex" } }}>
           <Badge badgeContent={0} color="secondary" showZero={false}><FavoriteBorderIcon /></Badge>
         </IconButton>
-        <IconButton onClick={() => navigate({ to: "/cart" })}>
+        <IconButton onClick={() => setCartOpen(true)} aria-label="Open cart">
           <Badge badgeContent={cartCount} color="secondary"><ShoppingBagOutlinedIcon /></Badge>
         </IconButton>
       </Toolbar>
+      <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
     </AppBar>
   );
 }
