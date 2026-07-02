@@ -2,15 +2,21 @@ import { Box, Card, CardContent, Chip, IconButton, Rating, Stack, Typography, Bu
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import type { Product } from "@/data/products";
+import { useNavigate } from "@tanstack/react-router";
+import { useApp } from "@/store/AppContext";
 
 export function ProductCard({ product }: { product: Product }) {
+  const { addToCart } = useApp();
+  const navigate = useNavigate();
   return (
     <Card
+      onClick={() => navigate({ to: "/product/$id", params: { id: String(product.id) } })}
       sx={{
         height: "100%",
         display: "flex",
         flexDirection: "column",
         overflow: "hidden",
+        cursor: "pointer",
         transition: "transform 250ms ease, box-shadow 250ms ease",
         "&:hover": {
           transform: "translateY(-4px)",
@@ -53,6 +59,7 @@ export function ProductCard({ product }: { product: Product }) {
             fullWidth
             variant="contained"
             startIcon={<ShoppingBagOutlinedIcon />}
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); addToCart(product.id); }}
             sx={{ bgcolor: "#0f172a", color: "#fff", "&:hover": { bgcolor: "#1e293b" } }}
           >
             Add to bag
